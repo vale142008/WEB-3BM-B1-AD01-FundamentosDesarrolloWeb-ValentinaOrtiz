@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | AutoVale</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #2d3748;
+        }
+        /* Navbar clara y elegante con toque pastel */
+        .custom-navbar {
+            background-color: #ffffff !important;
+            border-bottom: 2px solid #f3e8ff;
+            box-shadow: 0 2px 10px rgba(91, 33, 182, 0.04);
+        }
+        .custom-navbar .navbar-brand {
+            color: #6b21a8 !important;
+        }
+        .custom-navbar .nav-link {
+            color: #4b5563 !important;
+        }
+        .custom-navbar .nav-link:hover, 
+        .custom-navbar .nav-link.active {
+            color: #7e22ce !important;
+        }
+
+        /* Hero section limpia en tonos claros y pasteles */
+        .custom-hero {
+            background: linear-gradient(135deg, rgba(243, 232, 255, 0.7), rgba(250, 245, 255, 0.9)), 
+                        url('https://servitechapp.com/wp-content/uploads/2023/03/MECANICOS-TALLER-1080x675.jpg') center/cover no-repeat;
+            padding: 70px 0;
+            border-bottom: 1px solid #f3e8ff;
+        }
+        
+        .custom-btn-main {
+            background-color: #7e22ce;
+            color: #ffffff;
+            border: none;
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .custom-btn-main:hover {
+            background-color: #6b21a8;
+            color: #ffffff;
+        }
+
+        /* Cajas de servicios con fondo blanco y bordes pastel suaves */
+        .service-box {
+            background: #faf5ff;
+            border-radius: 10px;
+            padding: 20px 15px;
+            border: 1px solid #e9d5ff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .service-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(126, 34, 206, 0.08);
+            background: #ffffff;
+        }
+
+        /* Botón de inicio de sesión general */
+        .btn-login-outline {
+            border-color: #7e22ce;
+            color: #7e22ce;
+        }
+        .btn-login-outline:hover {
+            background-color: #7e22ce;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="fa-solid fa-wrench me-2"></i>AutoVale</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inscripcion.html">Solicitud</a></li>
+                    <li class="nav-item user-only d-none"><a class="nav-link" href="cuenta.html">Mis Mantenimientos</a></li>
+                    <li class="nav-item admin-only d-none"><a class="nav-link" href="admin.html">Panel Admin</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div id="userInfo" class="text-dark me-3 d-none">
+                        <span id="userNameDisplay" class="fw-bold" style="color: #6b21a8;"></span> 
+                        <span id="userRoleBadge" class="badge bg-light text-purple border border-purple ms-1" style="color: #7e22ce !important;"></span>
+                    </div>
+                    <button id="btnLoginModal" class="btn btn-login-outline rounded-3 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="fa-solid fa-right-to-bracket me-1"></i> Iniciar Sesión
+                    </button>
+                    <button id="btnLogout" class="btn btn-outline-danger rounded-3 px-3 btn-sm d-none" onclick="logout()">
+                        <i class="fa-solid fa-right-from-bracket me-1"></i> Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="custom-hero text-center">
+            <div class="container">
+                <h1 class="h2 fw-bold mb-2" style="color: #5b21b6;">Mantenimiento Automotriz Especializado</h1>
+                <p class="text-muted mb-3 small" style="max-width: 600px; margin: 0 auto;">Garantizamos la seguridad y máximo rendimiento de tu vehículo.</p>
+                <a href="inscripcion.html" class="custom-btn-main shadow-sm btn-sm">
+                    <i class="fa-solid fa-car me-2"></i>Registrar Solicitud
+                </a>
+            </div>
+        </section>
+
+        <section class="py-5 bg-white">
+            <div class="container">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <h4 class="fw-bold mb-2" style="color: #6b21a8;">Acerca de AutoVale</h4>
+                        <p class="text-secondary small mb-3">Centro de servicio automotriz integral con más de 10 años de experiencia ofreciendo diagnóstico computarizado y mantenimiento preventivo.</p>
+                        <ul class="list-unstyled small text-secondary">
+                            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color: #7e22ce;"></i>Atención rápida y garantizada.</li>
+                            <li><i class="fa-solid fa-check me-2" style="color: #7e22ce;"></i>Equipos de última generación.</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img src="https://servitechapp.com/wp-content/uploads/2023/03/MECANICOS-TALLER-1080x675.jpg" alt="Taller" class="img-fluid rounded-3 shadow-sm w-100" style="max-height: 220px; object-fit: cover; border: 1px solid #f3e8ff;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-4" style="background-color: #faf5ff;">
+            <div class="container">
+                <h5 class="fw-bold text-center mb-3" style="color: #6b21a8;">Nuestros Servicios</h5>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="service-box text-center">
+                            <i class="fa-solid fa-oil-can fs-4 mb-1" style="color: #7e22ce;"></i>
+                            <h6 class="fw-bold mb-1" style="color: #5b21b6;">Cambio de Aceite</h6>
+                            <p class="text-muted small mb-0">Reemplazo de aceite y filtro para proteger el motor.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="service-box text-center">
+                            <i class="fa-solid fa-car-burst fs-4 mb-1" style="color: #7e22ce;"></i>
+                            <h6 class="fw-bold mb-1" style="color: #5b21b6;">Mantenimiento de Frenos</h6>
+                            <p class="text-muted small mb-0">Revisión y cambio de pastillas para mayor seguridad.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="service-box text-center">
+                            <i class="fa-solid fa-arrows-split-up-and-left fs-4 mb-1" style="color: #7e22ce;"></i>
+                            <h6 class="fw-bold mb-1" style="color: #5b21b6;">Alineación y Balanceo</h6>
+                            <p class="text-muted small mb-0">Ajuste de dirección y equilibrio de neumáticos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header text-white rounded-top-4" style="background-color: #7e22ce;">
+                    <h5 class="modal-title"><i class="fa-solid fa-user-lock me-2"></i>Inicio de Sesión</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 bg-white rounded-bottom-4">
+                    <form id="formLogin">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold" style="color: #6b21a8;">Usuario</label>
+                            <input type="text" class="form-control rounded-3 py-2 border-purple-subtle" id="loginUser" required placeholder="cliente1 o admin">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold" style="color: #6b21a8;">Contraseña</label>
+                            <input type="password" class="form-control rounded-3 py-2 border-purple-subtle" id="loginPass" required placeholder="12345 o admin123">
+                        </div>
+                        <button type="submit" class="btn text-white w-100 fw-bold py-2 rounded-3 shadow-sm" style="background-color: #7e22ce;">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
